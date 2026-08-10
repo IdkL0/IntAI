@@ -7,23 +7,35 @@
 #include <utility>
 #include <vector>
 
+enum BlockType : uint8_t
+{
+	BetterThanGood,
+	Normal,
+	YOUWILLDIE
+};
+
+class Entity;
+class World;
+
 struct Block
 {
 	virtual ~Block() = default;
 	
-	uint16_t id = 0;
 	std::string name = "Air";
 	std::string texture_path = ""; 
+	uint16_t id = 0;
+	BlockType type = Normal;
 	bool solid = false;
+	bool collideEvent = false;
 	bool interactable = false;
 	bool dynamic = false;
 	Rectangle hitbox = {0, 0, 1, 1};
 
-	virtual void EntCollide() {};
+	virtual void EntCollide(World& w, Entity& e, size_t x, size_t y) {};
 
-	virtual void Interact() {};
+	virtual void Interact(World& w, Entity& e, size_t x, size_t y) {};
 
-	virtual void Tick() {};
+	virtual void Tick(World& w, size_t x, size_t y) {};
 };
 
 class BlocksRegistry

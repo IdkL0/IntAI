@@ -7,7 +7,11 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+add_subdirectory(${CMAKE_SOURCE_DIR}/external/imgui ${CMAKE_BINARY_DIR}/external/imgui-build)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE NO_FONT_AWESOME)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE raylib imgui)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD

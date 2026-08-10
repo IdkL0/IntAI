@@ -87,15 +87,15 @@ namespace render
 		Rectangle worldRect = {0, 0, (float)(WORLD_CHUNKS_XY*WORLDCHUNK_XY)+1.f, (float)(WORLD_CHUNKS_XY*WORLDCHUNK_XY)+1.f};
 
 		if (!aabb::Box(worldSc, worldRect)) return;
-		
+
 		for (auto& ent : world.entities)
 		{
 			Vector2 pos = ent->pos;
 			Rectangle box = ent->box;
 
-			Rectangle wrldBox = {pos.x + box.x, pos.y + box.y, box.width, box.width};
+			Rectangle wrldBox = {pos.x + box.x, pos.y + box.y, box.width, box.height};
 
-			if (!aabb::Box(worldSc, wrldBox)) continue;
+			//if (!aabb::Box(worldSc, wrldBox)) continue;
 
 			DrawLineV({pos.x-0.5f, pos.y}, {pos.x+0.5f, pos.y}, YELLOW);
 			DrawLineV({pos.x, pos.y-0.5f}, {pos.x, pos.y+0.5f}, YELLOW);

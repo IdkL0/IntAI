@@ -40,7 +40,7 @@ void PlayerEntityController::Update(double dt)
 		auto ent = std::make_unique<AIEntity>(world);
 		ent->pos = mousePos;
 		//ent->vel = {rng::RandFloat(-10, 10), rng::RandFloat(-10, 10)};
-		ent->velDrag = 1;
+		//ent->velDrag = 1;
 
 		world.entities.push_back(std::move(ent));
 	}

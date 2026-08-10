@@ -73,4 +73,5 @@ void Render::Update(double dt)
 	//overlay
 	DrawText(std::to_string(GetFPS()).c_str(), 10, 10, 20, GREEN);
 	DrawText(std::to_string(GetTime()).c_str(), 10, 10 + 20, 20, GREEN);
+	DrawText(std::to_string(world->entities.size()).c_str(), 10, 10 + 20*2, 20, GREEN);
 }

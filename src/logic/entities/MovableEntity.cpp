@@ -95,6 +95,11 @@ void MovableEntity::Move(Vector2 m)
 								worldBox.y = next.y + box.y;
 								vel.y = 0;
 							}
+
+							if (blc->collideEvent)
+							{
+								blc->EntCollide(*world, *this, x, y);
+							}
 						}
 					}
 				}

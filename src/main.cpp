@@ -1,4 +1,9 @@
+#include <iostream>
 #include <raylib.h>
+
+#include "imgui.h"
+#include "rlImGui.h"
+
 #include <string>
 
 #include "logic/Logic.hpp"
@@ -16,6 +21,7 @@ int main(int argc, char* argv[])
 	InitWindow(800, 600, "IntAI");
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 	SetTargetFPS(0);
+	rlImGuiSetup(true);
 
 	res::Load();
 
@@ -37,17 +43,28 @@ int main(int argc, char* argv[])
 		double now = GetTime();
 		double delta = now - last;
 		last = now;
-		
+
 		logic.Update(delta);
 
 		BeginDrawing();
 
 		render.Update(delta);
 
+		rlImGuiBegin();
+
+		// ImGui::Begin("Test");
+
+		// ImGui::Text("Poka mir!");
+
+		// ImGui::End();
+
+		rlImGuiEnd();
+
 		EndDrawing();
 	}
 	res::Unload();
 
+	rlImGuiShutdown();
 	CloseWindow();
 
 	CameraMng::DESTROY();
