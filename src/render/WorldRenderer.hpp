@@ -68,7 +68,10 @@ namespace render
 				Rectangle source = ResourcesManager::GetBlockAtlasRect(blockID);
 				Rectangle dest = {worldRenderX, worldRenderY, blocksize, blocksize};
 
-				DrawTexturePro(ResourcesManager::GetBlocksAtlas(), source, dest, Vector2{0.f, 0.f}, 0.f, WHITE);
+				Texture2D atlasTex = *ResourcesManager::GetTex(BlocksRegistry::regs[blockID]->texture_path);
+
+				//DrawTexturePro(ResourcesManager::GetBlocksAtlas(), source, dest, Vector2{0.f, 0.f}, 0.f, WHITE);
+				DrawTexturePro(atlasTex, {0, 0, (float)atlasTex.width, (float)atlasTex.height}, dest, Vector2{0.f, 0.f}, 0.f, WHITE);
 			}
 		}
 	}

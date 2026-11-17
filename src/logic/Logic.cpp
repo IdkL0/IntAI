@@ -5,6 +5,7 @@
 #include "input/PlayerCameraController.hpp"
 #include "input/PlayerWorldController.hpp"
 #include "input/PlayerEntityController.hpp"
+#include "input/PlayerTimeController.hpp"
 #include <memory>
 #include <utility>
 
@@ -21,6 +22,7 @@ void Logic::Init()
 	AddInput<PlayerCameraController>();
 	AddInput<PlayerWorldController>();
 	AddInput<PlayerEntityController>();
+	AddInput<PlayerTimeController>();
 
 	// for (int i = 0; i < 128; i++)
 	// {
@@ -54,7 +56,7 @@ void Logic::Update(double dt)
 
 void Logic::Tick()
 {
-	world->Tick(GetTickTime());
+	world->Tick(GetTickTime()*world->timeScale);
 }
 
 double Logic::GetTickTime()

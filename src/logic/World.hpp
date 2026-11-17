@@ -20,6 +20,7 @@ public:
 	std::vector<std::unique_ptr<Entity>> entities;
 
 	Vector2 gravity = {0, 9.81f};
+	float timeScale = 1;
 
 	void Tick(double dt);
 

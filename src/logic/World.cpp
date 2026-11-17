@@ -5,6 +5,8 @@
 
 void World::Tick(double dt)
 {
+    if (timeScale == 0) return;
+
 	for (auto& ent : entities)
 	{
 		ent->Tick(dt);
